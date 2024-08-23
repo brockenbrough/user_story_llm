@@ -7,6 +7,32 @@ dotenv.config();
 
 const openai = new OpenAI({ apiKey: process.env.CHAT_API_KEY });
 
+async function openConversationAndGenerateUserStory(feedback, messageHistory) {
+    var command = "Create a user story from the following user feedback: " 
+    + feedback; 
+
+    var messageHistory = [
+        { role: "system", content: 'You are a useful assistant.' },
+        { role: "user", content: command }
+    ];
+
+    // AI response to creating a user story from the user feedback.
+    const completion = await openai.chat.completions.create({
+        model: "gpt-4o-mini", // Another model name: gpt-4
+        messages: messageHistory,  // Use the combined message array
+    });
+
+    // Add the completion response to the messageHistory
+    const updatedMessageHistory = [
+        ...messageHistory,
+        completion.choices[0].message // Add the AI's response
+    ];
+
+    const userStory = completion.choices[0].message.content;
+
+    return { userStory, updatedMessageHistory };
+}
+
 router.post('/create', async (req, res) => {
     try {
         // Extract values from the JSON body
@@ -17,28 +43,11 @@ router.post('/create', async (req, res) => {
             return res.status(400).json({ error: "userFeedback is required." });
         }
 
-        var command = "Create a user story from the following user feedback: " 
-            + feedback; 
+        var messageHistory = [];
 
-        var messageHistory = [
-            { role: "system", content: 'You are a useful assistant.' },
-            { role: "user", content: command }
-        ];
-
-        // AI response to creating a user story from the user feedback.
-        const completion = await openai.chat.completions.create({
-            model: "gpt-4o-mini", // Another model name: gpt-4
-            messages: messageHistory,  // Use the combined message array
-        });
-
-        const userStory = completion.choices[0].message.content;
-
-        // Add the completion response to the messageHistory
-        var updatedMessageHistory = [
-            ...messageHistory,
-            completion.choices[0].message // Add the AI's response
-        ];
-
+        // Call the refactored function
+        const { userStory, updatedMessageHistory } = await openConversationAndGenerateUserStory(feedback);
+        
         return res.json({
             userStory: userStory,
             messageHistory: updatedMessageHistory
@@ -51,3 +60,4 @@ router.post('/create', async (req, res) => {
 });
 
 module.exports = router;
+
