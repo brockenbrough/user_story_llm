@@ -24,13 +24,8 @@ function CreateUserStoryPage() {
                 feedback: userFeedback
             });
 
-            const userStory = response.data.userStory;
-            setGeneratedUserStory(userStory);
-
-            // setMessageHistory([
-            //     ...newMessageHistory,
-            //     { role: "assistant", content: responseContent }
-            // ]);
+            setGeneratedUserStory(response.data.userStory);
+            setMessageHistory(response.data.messageHistory);
         } catch (error) {
             console.error('There was an error!', error);
             setGeneratedUserStory('There was an error processing your request.');
@@ -45,22 +40,23 @@ function CreateUserStoryPage() {
             <h1>Create a User Story</h1>
             <div className="input-container">
                 <label>
-                    Your Prompt:
+                    User Feedback:
                     <textarea
                         value={userFeedback}
+                        placeholder="Enter feedback from your customer for a single topic that could be completed in a sprint."
                         onChange={(e) => setUserFeedback(e.target.value)}
                         rows="4"
                         className="user-prompt-textarea"
                     />
                 </label>
             </div>
-            <button className="ask-button" onClick={handleAsk}>Ask</button>
+            <button className="ask-button" onClick={handleAsk}>Create Story</button>
             <div className="response-container">
                 <h2>User Story:</h2>
                 <p>{generatedUserStory}</p>
             </div>
             <div className="message-history-container">
-                <h2>Message History:</h2>
+                <h4>Log:</h4>
                 <div className="message-history">
                     {messageHistory.map((message, index) => (
                         <div key={index} className="message-item">
