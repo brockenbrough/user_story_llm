@@ -4,6 +4,7 @@ import axios from 'axios';
 function CreateUserStoryPage() {
     const [systemMessage, setSystemMessage] = useState('You are a useful assistant.');
     const [userFeedback, setUserFeedback] = useState('');
+    const [appContext, setAppContext] = useState('');
     const [generatedUserStory, setGeneratedUserStory] = useState('');
     const [messageHistory, setMessageHistory] = useState([
         { role: "system", content: 'You are a useful assistant.' },
@@ -14,14 +15,10 @@ function CreateUserStoryPage() {
         setLoading(true);
         document.body.style.cursor = 'wait';
 
-        // const newMessageHistory = [
-        //     ...messageHistory,
-        //     { role: "user", content: userFeedback },
-        // ];
-
         try {
             const response = await axios.post('http://localhost:8081/userStory/create', {
-                feedback: userFeedback
+                feedback: userFeedback,
+                appContext: appContext
             });
 
             setGeneratedUserStory(response.data.userStory);
@@ -40,6 +37,19 @@ function CreateUserStoryPage() {
             <h1>Create a User Story</h1>
             <div className="input-container">
                 <label>
+                    Application:
+                    <textarea
+                        value={appContext}
+                        placeholder="Given a brief description of your application."
+                        onChange={(e) => setAppContext(e.target.value)}
+                        rows="4"
+                        className="user-prompt-textarea"
+                    />
+                </label>
+            </div>
+            
+            <div className="input-container">
+                <label>
                     User Feedback:
                     <textarea
                         value={userFeedback}
@@ -50,6 +60,7 @@ function CreateUserStoryPage() {
                     />
                 </label>
             </div>
+
             <button className="ask-button" onClick={handleAsk}>Create Story</button>
             <div className="response-container">
                 <h2>User Story:</h2>

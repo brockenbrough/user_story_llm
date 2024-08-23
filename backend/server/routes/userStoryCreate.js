@@ -8,7 +8,7 @@ dotenv.config();
 const openai = new OpenAI({ apiKey: process.env.CHAT_API_KEY });
 
 async function openConversationAndGenerateUserStory(command, messageHistory) {
-    
+
     var messageHistory = [
         { role: "system", content: 'You are a useful assistant.' },
         { role: "user", content: command }
@@ -34,20 +34,23 @@ async function openConversationAndGenerateUserStory(command, messageHistory) {
 router.post('/create', async (req, res) => {
     try {
         // Extract values from the JSON body
-        const { feedback } = req.body;
+        const { feedback, appContext } = req.body;
 
         // Validate the request body
         if (!feedback) {
-            return res.status(400).json({ error: "userFeedback is required." });
+            return res.status(400).json({ error: "user feedback is required." });
+        }
+        if (!appContext) {
+            return res.status(400).json({ error: "application context is required." });
         }
 
         var messageHistory = [];
 
-       // Open the conversation.
+       // Open the conversation.  Store result in userStory.
         const { userStory, updatedMessageHistory } 
             = await openConversationAndGenerateUserStory(
-                    "Create a one sentence user story from the following user feedback: " 
-                      + feedback);
+                    "Here is a description of my application: " + appContext
+                    + " Create a one sentence user story from the following user feedback: " + feedback);
         
         return res.json({
             userStory: userStory,
