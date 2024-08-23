@@ -25,10 +25,13 @@ router.post('/create', async (req, res) => {
             { role: "user", content: command }
         ];
 
+        // AI response to creating a user story from the user feedback.
         const completion = await openai.chat.completions.create({
             model: "gpt-4o-mini", // Another model name: gpt-4
             messages: messageHistory,  // Use the combined message array
         });
+
+        const userStory = completion.choices[0].message.content;
 
         // Add the completion response to the messageHistory
         var updatedMessageHistory = [
@@ -37,7 +40,7 @@ router.post('/create', async (req, res) => {
         ];
 
         return res.json({
-            message: completion.choices[0].message,
+            userStory: userStory,
             messageHistory: updatedMessageHistory
         });
 

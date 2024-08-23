@@ -24,7 +24,7 @@ function CreateUserStoryPage() {
                 feedback: userFeedback
             });
 
-            const userStory = response.data.message.content;
+            const userStory = response.data.userStory;
             setGeneratedUserStory(userStory);
 
             // setMessageHistory([
