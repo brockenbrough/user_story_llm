@@ -7,10 +7,8 @@ dotenv.config();
 
 const openai = new OpenAI({ apiKey: process.env.CHAT_API_KEY });
 
-async function openConversationAndGenerateUserStory(feedback, messageHistory) {
-    var command = "Create a user story from the following user feedback: " 
-    + feedback; 
-
+async function openConversationAndGenerateUserStory(command, messageHistory) {
+    
     var messageHistory = [
         { role: "system", content: 'You are a useful assistant.' },
         { role: "user", content: command }
@@ -45,8 +43,11 @@ router.post('/create', async (req, res) => {
 
         var messageHistory = [];
 
-        // Call the refactored function
-        const { userStory, updatedMessageHistory } = await openConversationAndGenerateUserStory(feedback);
+       // Open the conversation.
+        const { userStory, updatedMessageHistory } 
+            = await openConversationAndGenerateUserStory(
+                    "Create a one sentence user story from the following user feedback: " 
+                      + feedback);
         
         return res.json({
             userStory: userStory,
