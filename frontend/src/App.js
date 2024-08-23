@@ -7,6 +7,7 @@ import './css/global_style.css';
 import Navbar from "./components/navbar";
 import LandingPage from "./components/pages/landingPage";
 import SingleChatPage from "./components/pages/singleChatPage";
+import CreateUserStoryPage from "./components/pages/createUserStoryPage";
 import HomePage from "./components/pages/homePage";
 import Login from "./components/pages/loginPage";
 import Signup from "./components/pages/registerPage";
@@ -33,7 +34,8 @@ const App = () => {
           <Route exact path="/home" element={<HomePage />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
-          <Route exact path="/singleChat" element={<SingleChatPage />} />
+          <Route exact path="/chat" element={<SingleChatPage />} />
+          <Route exact path="/createUserStory" element={<CreateUserStoryPage />} />
           <Route path="/privateUserProfile" element={<PrivateUserProfile />} />
         </Routes>
       </UserContext.Provider>
