@@ -1,0 +1,88 @@
+/* Extend existing styles */
+
+/* Container for the entire page */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    background-color: #f0f2f5;
+    min-height: 100vh;
+    gap: 20px;
+}
+
+/* Header style */
+.page-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Styling the user prompt input section */
+.input-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.input-container label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.user-prompt-textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.user-prompt-textarea:focus {
+    border-color: #6e8efb;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+/* Response message styling */
+.response-container {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Message history container */
+.message-history-container {
+    width: 100%;
+    max-width: 400px;
+    border-left: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message-history {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.message-item {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.message-item strong {
+    font-weight: bold;
+    color: #555;
+}
