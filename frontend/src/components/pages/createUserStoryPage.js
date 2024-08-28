@@ -7,10 +7,12 @@ function CreateUserStoryPage() {
     const [appContext, setAppContext] = useState('');
     const [generatedUserStory, setGeneratedUserStory] = useState('');
     const [smallScore, setSmallScore] = useState('');
+    const [smallDetails, setSmallDetails] = useState('');
     const [messageHistory, setMessageHistory] = useState([
         { role: "system", content: 'You are a useful assistant.' },
     ]);
     const [loading, setLoading] = useState(false);
+    const [showShortDetails, setShowShortDetails] = useState(false); // New state for toggling details
 
     const handleAsk = async () => {
         setLoading(true);
@@ -24,7 +26,8 @@ function CreateUserStoryPage() {
 
             setGeneratedUserStory(response.data.userStory);
             setMessageHistory(response.data.messageHistory);
-            setSmallScore(response.data.smallScoreResults);
+            setSmallScore(response.data.smallScore);
+            setSmallDetails(response.data.smallDetails);
         } catch (error) {
             console.error('There was an error!', error);
             setGeneratedUserStory('There was an error processing your request.');
@@ -70,10 +73,19 @@ function CreateUserStoryPage() {
                 <p>{generatedUserStory}</p>
             </div>
 
-                        
             <div className="response-container">
-                <h2>Is the story Small:</h2>
+                <h4>Small Score (1 to 5)</h4>
                 <p>{smallScore}</p>
+                <button onClick={() => setShowShortDetails(!showShortDetails)}>
+                    {showShortDetails ? 'Hide Details' : 'Details'}
+                </button>
+                {showShortDetails && (
+                    <div className="message-history-container">
+                        <div className="small-details">
+                            <p>{smallDetails}</p>>
+                        </div>
+                    </div>
+                )}
             </div>
 
             <div className="message-history-container">
@@ -89,6 +101,5 @@ function CreateUserStoryPage() {
         </div>
     );
 }
-
 
 export default CreateUserStoryPage;
