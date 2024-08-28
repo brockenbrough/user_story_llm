@@ -1,0 +1,45 @@
+Date : 2024-08-26 14:25:55
+Directory : c:\Users\abrockenbrough\repos\user_story_llm\frontend\src
+Total : 14 files,  833 codes, 43 comments, 116 blanks, all 992 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         13 |        762 |         37 |        104 |        903 |
+| CSS        |          1 |         71 |          6 |         12 |         89 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                 | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                    |         14 |        833 |         43 |        116 |        992 |
+| . (Files)                                                                                            |          2 |         54 |          7 |         11 |         72 |
+| components                                                                                           |         10 |        701 |         30 |         91 |        822 |
+| components (Files)                                                                                   |          1 |         24 |          7 |          5 |         36 |
+| components\pages                                                                                     |          9 |        677 |         23 |         86 |        786 |
+| css                                                                                                  |          1 |         71 |          6 |         12 |         89 |
+| utilities                                                                                            |          1 |          7 |          0 |          2 |          9 |
++------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                             | language   | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\App.js                                     | JavaScript |         37 |          4 |          8 |         49 |
+| c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\navbar.js                       | JavaScript |         24 |          7 |          5 |         36 |
+| c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\pages\createUserStoryPage.js    | JavaScript |         81 |          0 |         14 |         95 |
+| c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\pages\editUserPage.js           | JavaScript |        128 |          9 |         15 |        152 |
+| c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\pages\homePage.js               | JavaScript |         41 |          0 |          8 |         49 |
+| c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\pages\landingPage.js            | JavaScript |         17 |          0 |          3 |         20 |
+| c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\pages\loginPage.js              | JavaScript |        132 |          1 |         12 |        145 |
+| c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\pages\privateUserProfilePage.js | JavaScript |         54 |          5 |         10 |         69 |
+| c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\pages\registerPage.js           | JavaScript |        136 |          2 |          8 |        146 |
+| c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\pages\singleChatPage.js         | JavaScript |         68 |          0 |          9 |         77 |
+| c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\pages\testPage.js               | JavaScript |         20 |          6 |          7 |         33 |
+| c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\css\global_style.css                       | CSS        |         71 |          6 |         12 |         89 |
+| c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\index.js                                   | JavaScript |         17 |          3 |          3 |         23 |
+| c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\utilities\decodeJwt.js                     | JavaScript |          7 |          0 |          2 |          9 |
+| Total                                                                                                |            |        833 |         43 |        116 |        992 |
++------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

@@ -79,14 +79,16 @@ router.post('/create', async (req, res) => {
         // Score the "Small" attribute
         var { result, messageHistoryResult } 
             = await askAI(
-                "Could this user story be completed in one sprint?",
+                "Could this user story be completed in one sprint where the sprint is one week long? "
+                + "Give an answer that is just a single number between 1 and 5 " 
+                + "where 1 means very unlikely and 5 is very likely.",
                 updatedMessageHistory);
 
         messageHistory = messageHistoryResult
 
         return res.json({
             userStory: userStory,
-            messageHistory: updatedMessageHistory,
+            messageHistory: messageHistory,
             smallScoreResults: result
         });
 

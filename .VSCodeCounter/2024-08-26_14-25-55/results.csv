@@ -1,0 +1,16 @@
+"filename", "language", "JavaScript", "CSS", "comment", "blank", "total"
+"c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\App.js", "JavaScript", 37, 0, 4, 8, 49
+"c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\navbar.js", "JavaScript", 24, 0, 7, 5, 36
+"c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\pages\createUserStoryPage.js", "JavaScript", 81, 0, 0, 14, 95
+"c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\pages\editUserPage.js", "JavaScript", 128, 0, 9, 15, 152
+"c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\pages\homePage.js", "JavaScript", 41, 0, 0, 8, 49
+"c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\pages\landingPage.js", "JavaScript", 17, 0, 0, 3, 20
+"c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\pages\loginPage.js", "JavaScript", 132, 0, 1, 12, 145
+"c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\pages\privateUserProfilePage.js", "JavaScript", 54, 0, 5, 10, 69
+"c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\pages\registerPage.js", "JavaScript", 136, 0, 2, 8, 146
+"c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\pages\singleChatPage.js", "JavaScript", 68, 0, 0, 9, 77
+"c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\components\pages\testPage.js", "JavaScript", 20, 0, 6, 7, 33
+"c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\css\global_style.css", "CSS", 0, 71, 6, 12, 89
+"c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\index.js", "JavaScript", 17, 0, 3, 3, 23
+"c:\Users\abrockenbrough\repos\user_story_llm\frontend\src\utilities\decodeJwt.js", "JavaScript", 7, 0, 0, 2, 9
+"Total", "-", 762, 71, 43, 116, 992
