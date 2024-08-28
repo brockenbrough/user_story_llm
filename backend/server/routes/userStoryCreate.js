@@ -21,14 +21,14 @@ async function openConversationAndGenerateUserStory(command, messageHistory) {
     });
 
     // Add the completion response to the messageHistory
-    const updatedMessageHistory = [
+    const aiLog = [
         ...messageHistory,
         completion.choices[0].message // Add the AI's response
     ];
 
-    const userStory = completion.choices[0].message.content;
+    const answer = completion.choices[0].message.content;
 
-    return { userStory, updatedMessageHistory };
+    return { answer, aiLog };
 }
 
 async function askAI(command, messageHistory) {
@@ -45,14 +45,14 @@ async function askAI(command, messageHistory) {
 
     // Add the completion response to the messageHistory
     
-    messageHistoryResult = [
+    const aiLog = [
         ...messageHistoryResult,
         completion.choices[0].message // Add the AI's response
     ];
 
-    const result = completion.choices[0].message.content;
+    const answer = completion.choices[0].message.content;
 
-    return { result, messageHistoryResult };
+    return { answer, aiLog };
 }
 
 router.post('/create', async (req, res) => {
@@ -71,26 +71,31 @@ router.post('/create', async (req, res) => {
         var messageHistory = [];
 
         // Open the conversation.  Store result in userStory.
-        const { userStory, updatedMessageHistory } 
+        var { answer: userStory, aiLog: messageHistory } 
             = await openConversationAndGenerateUserStory(
                     "Here is a description of my application: " + appContext
                     + " Create a one sentence user story from the following user feedback: " + feedback);
         
-        // Score the "Small" attribute
-        var { result, messageHistoryResult } 
+        // Get Small Score and Details
+        var { answer: smallScore, aiLog: messageHistory } 
             = await askAI(
                 "Could this user story be completed in one sprint where the sprint is one week long? "
                 + "Give an answer that is just a single number between 1 and 5 " 
                 + "where 1 means very unlikely and 5 is very likely.",
-                updatedMessageHistory);
+                messageHistory);
 
-        messageHistory = messageHistoryResult
+        var { answer: smallDetails, aiLog: messageHistory } 
+            = await askAI(
+                "Explain your score.",
+                messageHistory);
 
         return res.json({
             userStory: userStory,
+            smallScore: smallScore,
+            smallDetails: smallDetails,
             messageHistory: messageHistory,
-            smallScoreResults: result
         });
+ 
 
     } catch (error) {
         console.error("Error generating completion:", error);

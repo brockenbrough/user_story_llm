@@ -6,7 +6,7 @@ function CreateUserStoryPage() {
     const [userFeedback, setUserFeedback] = useState('');
     const [appContext, setAppContext] = useState('');
     const [generatedUserStory, setGeneratedUserStory] = useState('');
-    const [smallScoreResults, setSmallScoreResults] = useState('');
+    const [smallScore, setSmallScore] = useState('');
     const [messageHistory, setMessageHistory] = useState([
         { role: "system", content: 'You are a useful assistant.' },
     ]);
@@ -24,7 +24,7 @@ function CreateUserStoryPage() {
 
             setGeneratedUserStory(response.data.userStory);
             setMessageHistory(response.data.messageHistory);
-            setSmallScoreResults(response.data.smallScoreResults);
+            setSmallScore(response.data.smallScoreResults);
         } catch (error) {
             console.error('There was an error!', error);
             setGeneratedUserStory('There was an error processing your request.');
@@ -73,7 +73,7 @@ function CreateUserStoryPage() {
                         
             <div className="response-container">
                 <h2>Is the story Small:</h2>
-                <p>{smallScoreResults}</p>
+                <p>{smallScore}</p>
             </div>
 
             <div className="message-history-container">
