@@ -95,6 +95,28 @@ router.post('/create', async (req, res) => {
             smallDetails: smallDetails,
             messageHistory: messageHistory,
         });
+
+        // Get Negotiable Score and Details
+        var { answer: negotiableScore, aiLog: messageHistory } 
+            = await askAI(
+                "Is this user story negotiable with the user and not too detailed?"
+                + "Give an answer that is just a single number between 1 and 5 " 
+                + "where 1 means very unlikely and 5 is very likely.",
+                messageHistory);
+
+        var { answer: negotiableDetails, aiLog: messageHistory } 
+            = await askAI(
+                "Explain your score.",
+                messageHistory);
+
+        return res.json({
+            userStory: userStory,
+            smallScore: smallScore,
+            smallDetails: smallDetails,
+            negotiableScore: negotiableScore,
+            negotiableDetails: negotiableDetails,
+            messageHistory: messageHistory,
+        });
  
 
     } catch (error) {

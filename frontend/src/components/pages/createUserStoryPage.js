@@ -68,13 +68,20 @@ function CreateUserStoryPage() {
 
             <button className="ask-button" onClick={handleAsk}>Create Story</button>
 
-            <div className="response-container">
-                <h2>User Story:</h2>
-                <p>{generatedUserStory}</p>
+            <div>
+                <h2>User Story</h2>
             </div>
 
             <div className="response-container">
-                 <h4>INVEST Scores</h4>
+                <p>{generatedUserStory ? generatedUserStory : "Hit Create User Story to generate a user story."}</p>
+            </div>
+
+            <div>
+                <h4>INVEST Scores</h4>
+            </div>
+
+            <div className="response-container">
+
                 <div className="score-container"
                             style={{
                                 backgroundColor:
