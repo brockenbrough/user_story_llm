@@ -79,7 +79,7 @@ router.post('/create', async (req, res) => {
         // Get Small Score and Details
         var { answer: smallScore, aiLog: messageHistory } 
             = await askAI(
-                "Could this user story be completed in one sprint where the sprint is one week long? "
+                "Could this user story be completed in one sprint."
                 + "Give an answer that is just a single number between 1 and 5 " 
                 + "where 1 means very unlikely and 5 is very likely.",
                 messageHistory);

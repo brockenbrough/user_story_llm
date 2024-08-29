@@ -74,30 +74,19 @@ function CreateUserStoryPage() {
             </div>
 
             <div className="response-container">
-                <h4>Small Score (1 to 5)</h4>
-                <p>{smallScore}</p>
+                <h4>Small Score: {smallScore} out of 5</h4>
                 <button onClick={() => setShowShortDetails(!showShortDetails)}>
-                    {showShortDetails ? 'Hide Details' : 'Details'}
+                    {showShortDetails ? 'Hide' : 'More Info'}
                 </button>
                 {showShortDetails && (
                     <div className="message-history-container">
                         <div className="small-details">
-                            <p>{smallDetails}</p>>
+                            <p>{smallDetails}</p>
                         </div>
                     </div>
                 )}
             </div>
 
-            <div className="message-history-container">
-                <h4>Log:</h4>
-                <div className="message-history">
-                    {messageHistory.map((message, index) => (
-                        <div key={index} className="message-item">
-                            <strong>{message.role}:</strong> {message.content}
-                        </div>
-                    ))}
-                </div>
-            </div>
         </div>
     );
 }
