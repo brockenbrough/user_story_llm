@@ -74,17 +74,56 @@ function CreateUserStoryPage() {
             </div>
 
             <div className="response-container">
-                <h4>Small Score: {smallScore} out of 5</h4>
-                <button onClick={() => setShowShortDetails(!showShortDetails)}>
-                    {showShortDetails ? 'Hide' : 'More Info'}
-                </button>
-                {showShortDetails && (
-                    <div className="message-history-container">
-                        <div className="small-details">
-                            <p>{smallDetails}</p>
+                 <h4>INVEST Scores</h4>
+                <div className="score-container"
+                            style={{
+                                backgroundColor:
+                                smallScore === 5
+                                    ? "green"
+                                    : smallScore >= 3 && smallScore < 5
+                                    ? "yellow"
+                                    : smallScore >= 1 && smallScore < 3
+                                    ? "red"
+                                    : "white"
+                            }}
+                    >
+                    <h4>Small Score: {smallScore} out of 5</h4>
+                    <button onClick={() => setShowShortDetails(!showShortDetails)}>
+                        {showShortDetails ? 'Hide' : 'More Info'}
+                    </button>
+                    {showShortDetails && (
+                        <div className="message-history-container">
+                            <div className="small-details">
+                                <p>{smallDetails}</p>
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )}
+                </div>
+                
+                <div className="score-container"
+                            style={{
+                                backgroundColor:
+                                smallScore === 5
+                                    ? "green"
+                                    : smallScore >= 3 && smallScore < 5
+                                    ? "yellow"
+                                    : smallScore >= 1 && smallScore < 3
+                                    ? "red"
+                                    : "white"
+                            }}
+                    >
+                    <h4>Negotiable Score: {smallScore} out of 5</h4>
+                    <button onClick={() => setShowShortDetails(!showShortDetails)}>
+                        {showShortDetails ? 'Hide' : 'More Info'}
+                    </button>
+                    {showShortDetails && (
+                        <div className="message-history-container">
+                            <div className="small-details">
+                                <p>{smallDetails}</p>
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
 
         </div>
