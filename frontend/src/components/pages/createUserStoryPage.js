@@ -46,29 +46,36 @@ function CreateUserStoryPage() {
         <div className="page-container">
             <h1>Create a User Story</h1>
             <div className="input-container">
-                <label>
-                    Application:
-                    <textarea
-                        value={appContext}
-                        placeholder="Given a brief description of your application."
-                        onChange={(e) => setAppContext(e.target.value)}
-                        rows="4"
-                        className="user-prompt-textarea"
-                    />
-                </label>
+            <label style={{ width: '100%' }}>
+                <div>
+                    <h3>Application</h3>
+                </div>
+                <textarea
+                    value={appContext}
+                    placeholder="Give a brief description of your application."
+                    onChange={(e) => setAppContext(e.target.value)}
+                    rows="4"
+                    className="user-prompt-textarea"
+                    style={{ width: '100%', boxSizing: 'border-box' }}
+                />
+            </label>
             </div>
             
             <div className="input-container">
-                <label>
-                    User Feedback:
-                    <textarea
-                        value={userFeedback}
-                        placeholder="Enter feedback from your customer for a single topic that could be completed in a sprint."
-                        onChange={(e) => setUserFeedback(e.target.value)}
-                        rows="4"
-                        className="user-prompt-textarea"
-                    />
-                </label>
+            <label style={{ width: '100%' }}>
+                <div>
+                    <h3>User Feedback</h3>
+                </div>
+                <textarea
+                    value={userFeedback}
+                    placeholder="Give the user feedback that might be used to form a story that can be completed in one sprint."
+                    onChange={(e) => setUserFeedback(e.target.value)}
+                    rows="4"
+                    className="user-prompt-textarea"
+                    style={{ width: '100%', boxSizing: 'border-box' }}
+                />
+            </label>
+
             </div>
 
             <button className="ask-button" onClick={handleAsk}>Create Story</button>
