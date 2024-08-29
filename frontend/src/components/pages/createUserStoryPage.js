@@ -8,11 +8,14 @@ function CreateUserStoryPage() {
     const [generatedUserStory, setGeneratedUserStory] = useState('');
     const [smallScore, setSmallScore] = useState('');
     const [smallDetails, setSmallDetails] = useState('');
+    const [negotiableScore, setNegotiableScore] = useState('');
+    const [negotiableDetails, setNegotiableDetails] = useState('');
     const [messageHistory, setMessageHistory] = useState([
         { role: "system", content: 'You are a useful assistant.' },
     ]);
     const [loading, setLoading] = useState(false);
     const [showShortDetails, setShowShortDetails] = useState(false); // New state for toggling details
+    const [showNegotiableDetails, setShowNegotiableDetails] = useState(false); // New state for toggling details
 
     const handleAsk = async () => {
         setLoading(true);
@@ -28,6 +31,8 @@ function CreateUserStoryPage() {
             setMessageHistory(response.data.messageHistory);
             setSmallScore(response.data.smallScore);
             setSmallDetails(response.data.smallDetails);
+            setNegotiableScore(response.data.negotiableScore);
+            setNegotiableDetails(response.data.negotiableDetails);
         } catch (error) {
             console.error('There was an error!', error);
             setGeneratedUserStory('There was an error processing your request.');
@@ -110,23 +115,24 @@ function CreateUserStoryPage() {
                 <div className="score-container"
                             style={{
                                 backgroundColor:
-                                smallScore === 5
+                                negotiableScore === 5
                                     ? "green"
-                                    : smallScore >= 3 && smallScore < 5
+                                    : negotiableScore >= 3 && negotiableScore < 5
                                     ? "yellow"
-                                    : smallScore >= 1 && smallScore < 3
+                                    : negotiableScore >= 1 && negotiableScore < 3
                                     ? "red"
                                     : "white"
                             }}
                     >
-                    <h4>Negotiable Score: {smallScore} out of 5</h4>
-                    <button onClick={() => setShowShortDetails(!showShortDetails)}>
-                        {showShortDetails ? 'Hide' : 'More Info'}
+                    <h4>Negotiable Score: {negotiableScore} out of 5</h4>
+                    
+                    <button onClick={() => setShowNegotiableDetails(!showNegotiableDetails)}>
+                        {showNegotiableDetails ? 'Hide' : 'More Info'}
                     </button>
-                    {showShortDetails && (
+                    {showNegotiableDetails && (
                         <div className="message-history-container">
                             <div className="small-details">
-                                <p>{smallDetails}</p>
+                                <p>{negotiableDetails}</p>
                             </div>
                         </div>
                     )}

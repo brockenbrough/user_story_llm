@@ -89,13 +89,6 @@ router.post('/create', async (req, res) => {
                 "Explain your score.",
                 messageHistory);
 
-        return res.json({
-            userStory: userStory,
-            smallScore: smallScore,
-            smallDetails: smallDetails,
-            messageHistory: messageHistory,
-        });
-
         // Get Negotiable Score and Details
         var { answer: negotiableScore, aiLog: messageHistory } 
             = await askAI(
@@ -109,6 +102,8 @@ router.post('/create', async (req, res) => {
                 "Explain your score.",
                 messageHistory);
 
+        // Return results
+        
         return res.json({
             userStory: userStory,
             smallScore: smallScore,
